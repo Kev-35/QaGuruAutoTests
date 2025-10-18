@@ -2,7 +2,6 @@ package tests.demoqa;
 
 import org.junit.jupiter.api.Test;
 import pages.FormsPracticeFormPage;
-import java.lang.module.Configuration;
 
 public class FormsPracticeFormWithPageObjectsTests extends TastBase {
 
