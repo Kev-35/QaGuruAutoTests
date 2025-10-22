@@ -24,14 +24,16 @@ public class FormsPracticeFormPage {
             selectState = $("#react-select-3-input"),
             city = $("#city"),
             selectCity = $("#react-select-4-input"),
-            submitButton = $("#submit"),
-            closeButton = $("#closeLargeModal");
+            submitButton = $("#submit");
 
     CalendarComponent calendarComponent = new CalendarComponent();
     ResultsFormTableComponent modalDialog = new ResultsFormTableComponent();
 
     public FormsPracticeFormPage openPage(){
         open("/automation-practice-form");
+        return this;
+    }
+    public FormsPracticeFormPage removingBanner(){
         executeJavaScript("$('footer').remove();");
         executeJavaScript("$('#fixedban').remove();");
         return this;
@@ -92,16 +94,17 @@ public class FormsPracticeFormPage {
         submitButton.click();
         return this;
     }
+    public FormsPracticeFormPage chechHeader(String value){
+        modalDialog.checkHaveHeaderH1(value);
+        return this;
+    }
+
     public FormsPracticeFormPage checkResult(String key, String value) {
         modalDialog.resultsTable(key, value);
         return this;
     }
-    public FormsPracticeFormPage closeButton(){
-        closeButton.click();
-        return this;
-    }
-    public FormsPracticeFormPage shouldNotBeResultTable(){
+
+    public void shouldNotBeResultTable(){
         modalDialog.shouldNotBeAppearTable();
-        return this;
     }
 }
