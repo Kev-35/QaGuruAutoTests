@@ -58,7 +58,6 @@ public class FormsPracticeFormTests {
                 text("Lesovskay 3"),
                 text("NCR Noida"));
         $("#closeLargeModal").click();
-
     }
 
     @Test
@@ -74,8 +73,6 @@ public class FormsPracticeFormTests {
         $("#submit").click();
         $(".table-responsive").shouldHave(text("Don Carlione"), text("Male"), text("9001112222"));
         $("#closeLargeModal").click();
-
-
     }
 
     @Test
