@@ -26,7 +26,7 @@ public class FormsPracticeFormPage {
             selectCity = $("#react-select-4-input"),
             submitButton = $("#submit");
 
-    CalendarComponent calendarComponent = new CalendarComponent();
+                    CalendarComponent calendarComponent = new CalendarComponent();
     ResultsFormTableComponent modalDialog = new ResultsFormTableComponent();
 
     public FormsPracticeFormPage openPage(){

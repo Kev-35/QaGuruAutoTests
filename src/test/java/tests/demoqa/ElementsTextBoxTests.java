@@ -1,6 +1,8 @@
 package tests.demoqa;
+import data.TestData;
 import org.junit.jupiter.api.Test;
 import pages.ElementsTextBoxPage;
+
 public class ElementsTextBoxTests extends TastBase {
 
     ElementsTextBoxPage registration = new ElementsTextBoxPage();
@@ -8,16 +10,16 @@ public class ElementsTextBoxTests extends TastBase {
     @Test
     void fillFormTest() {
         registration.openPage()
-                .fullName("Alex")
-                .email("alex@egorov.com")
-                .currentAddress("Some street 1")
-                .permanentAddress("Another street 1")
+                .fullName(TestData.firstName)
+                .email(TestData.email)
+                .currentAddress(TestData.currentAddress)
+                .permanentAddress("Another street 5")
                 .submitButton()
 
-                .checkResult("Name:","Alex")
-                .checkResult("Email:","alex@egorov.com")
-                .checkResult("Current Address :","Some street 1")
-                .checkResult("Permananet Address :","Another street 5");
+                .checkResult("Name:", TestData.firstName)
+                .checkResult("Email:", TestData.email)
+                .checkResult("Current Address :", TestData.currentAddress)
+                .checkResult("Permananet Address :", "Another street 5");
 
     }
 }
