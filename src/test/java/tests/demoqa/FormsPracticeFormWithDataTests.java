@@ -33,7 +33,7 @@ public class FormsPracticeFormWithDataTests extends TastBase {
                 .checkResult("Student Email", email)
                 .checkResult("Gender", gender)
                 .checkResult("Mobile", phoneNumber)
-                .checkResult("Date of Birth", day + " " + month + " " + year)
+                .checkResult("Date of Birth", day + " " + month + "," + year)
                 .checkResult("Subjects", subject)
                 .checkResult("Hobbies", hobbies)
                 .checkResult("Picture", uploadPicture)
