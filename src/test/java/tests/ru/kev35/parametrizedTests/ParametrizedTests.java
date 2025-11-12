@@ -1,14 +1,16 @@
-package tests.demoqa;
+package tests.ru.kev35.parametrizedTests;
 
 import com.codeborne.selenide.Condition;
 import data.ParametrizedEnumData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
+import tests.ru.kev35.TestBase;
+
 import static com.codeborne.selenide.Selenide.*;
 
 @DisplayName("Аннотациии + Параметризованные тесты Junit")
-public class ParametrizedTests extends TastBase {
+public class ParametrizedTests extends TestBase {
 
     @ValueSource(strings = {
             "standard_user",
@@ -41,7 +43,7 @@ public class ParametrizedTests extends TastBase {
                         "do not match any user in this service"));
     }
 
-    @CsvFileSource(resources = "/parametrizedTestDataFile")
+    @CsvFileSource(resources = "/parametrizedTestDataFile.csv")
     @ParameterizedTest(name = "Проверка наполнения гамбургера полем {0} ")
     public void fillingHamburgerMenuFields(String value ) {
 

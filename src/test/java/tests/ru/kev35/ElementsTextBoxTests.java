@@ -1,9 +1,9 @@
-package tests.demoqa;
+package tests.ru.kev35;
 import data.TestData;
 import org.junit.jupiter.api.Test;
 import pages.ElementsTextBoxPage;
 
-public class ElementsTextBoxTests extends TastBase {
+public class ElementsTextBoxTests extends TestBase {
 
     ElementsTextBoxPage registration = new ElementsTextBoxPage();
 

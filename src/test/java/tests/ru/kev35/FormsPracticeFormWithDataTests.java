@@ -1,4 +1,4 @@
-package tests.demoqa;
+package tests.ru.kev35;
 
 import org.junit.jupiter.api.Test;
 import pages.FormsPracticeFormPage;
@@ -6,7 +6,7 @@ import pages.components.ResultsFormTableComponent;
 
 import static data.TestData.*;
 
-public class FormsPracticeFormWithDataTests extends TastBase {
+public class FormsPracticeFormWithDataTests extends TestBase {
     FormsPracticeFormPage registration = new FormsPracticeFormPage();
     ResultsFormTableComponent results = new ResultsFormTableComponent();
 

@@ -1,11 +1,11 @@
-package tests.demoqa;
+package tests.ru.kev35;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 
-public class TastBase {
+public class TestBase {
     @BeforeAll
     static void setupEnvironment() {
         Configuration.browserSize = "1920x1080";
