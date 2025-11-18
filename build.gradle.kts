@@ -1,9 +1,25 @@
 plugins {
     id("java")
+    id("io.qameta.allure") version "2.10.0"
 }
 
 group = "ru.kev35"
 version = "1.0-SNAPSHOT"
+
+
+allure {
+    report {
+        version.set("2.19.0") //версия Allure Report (https://github.com/allure-framework/allure2)
+    }
+    adapter {
+        aspectjWeaver.set(true) // обработка аннотации @Step
+        frameworks {
+            junit5 {
+                adapterVersion.set("2.19.0") //версия Allure JUnit5 (https://github.com/allure-framework/allure-java)
+            }
+        }
+    }
+}
 
 repositories {
     mavenCentral()
@@ -28,9 +44,14 @@ dependencies {
     testImplementation("com.fasterxml.jackson.core:jackson-databind:2.16.0")
     testImplementation("com.fasterxml.jackson.core:jackson-annotations:2.16.0")
 
+    testImplementation("io.qameta.allure:allure-selenide:2.17.3")
+    testRuntimeOnly("org.aspectj:aspectjweaver:1.9.25")
+
     implementation("org.slf4j:slf4j-api:2.0.7")
 }
 
 tasks.test {
     useJUnitPlatform()
+        //systemProperties(System.getPropertie); //для передачи всех системных свойств (system properties) из процесса Gradle
+                                                        // в процесс, в котором выполняются тесты.
 }
