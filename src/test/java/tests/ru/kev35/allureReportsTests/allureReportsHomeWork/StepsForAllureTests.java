@@ -31,8 +31,8 @@ public class StepsForAllureTests {
     }
 
     @Attachment(value = "Screenshot", type = "image/png", fileExtension = "png")
-    public void takeScreenshot() {
-        ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
+    public byte[] takeScreenshot() {
+        return ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 
 }
