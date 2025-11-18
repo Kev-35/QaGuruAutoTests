@@ -1,4 +1,4 @@
-package tests.ru.kev35;
+package tests.ru.kev35.demoQa;
 
 import org.junit.jupiter.api.Test;
 import pages.FormsPracticeFormPage;

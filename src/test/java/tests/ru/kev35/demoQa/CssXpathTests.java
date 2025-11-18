@@ -1,4 +1,4 @@
-package tests.ru.kev35;
+package tests.ru.kev35.demoQa;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;

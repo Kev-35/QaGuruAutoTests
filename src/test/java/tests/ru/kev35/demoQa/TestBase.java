@@ -1,4 +1,4 @@
-package tests.ru.kev35;
+package tests.ru.kev35.demoQa;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;

@@ -1,4 +1,4 @@
-package tests.ru.kev35;
+package tests.ru.kev35.demoQa;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;

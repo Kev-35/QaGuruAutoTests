@@ -1,4 +1,4 @@
-package tests.ru.kev35;
+package tests.ru.kev35.demoQa;
 import data.TestData;
 import org.junit.jupiter.api.Test;
 import pages.ElementsTextBoxPage;
