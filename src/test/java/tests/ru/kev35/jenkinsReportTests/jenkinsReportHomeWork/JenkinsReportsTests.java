@@ -105,10 +105,12 @@ public class JenkinsReportsTests {
         });
     }
 
-    @AfterAll
-    public static void afterTestsAddAttachments(){
-        Attach.screenshotAs();
-
+    @AfterEach
+    void addAttachments() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
     }
 
 }
