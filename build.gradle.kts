@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+
 plugins {
     id("java")
     id("io.qameta.allure") version "2.10.0"
@@ -48,10 +50,27 @@ dependencies {
     testRuntimeOnly("org.aspectj:aspectjweaver:1.9.25")
 
     implementation("org.slf4j:slf4j-api:2.0.7")
-}
 
-tasks.test {
-    useJUnitPlatform()
-        //systemProperties(System.getPropertie); //для передачи всех системных свойств (system properties) из процесса Gradle
-                                                        // в процесс, в котором выполняются тесты.
+
+    tasks.withType<Test> {
+        useJUnitPlatform()
+
+        testLogging {
+            lifecycle {
+                events("started", "skipped", "failed", "standard_error", "standard_out")
+                // Замените "short" на TestExceptionFormat.SHORT
+                exceptionFormat = TestExceptionFormat.SHORT
+            }
+        }
+    }
+
+
+    tasks.register("demoqa", Test::class) {
+        useJUnitPlatform {
+            includeTags("FormReg") // запуск тестов по Тегу запуск
+//     (или в терминале, или в дженкинсе -> gradle demoqa
+//            excludeTags("Tag")
+//    исключает тесты по Тегу
+        }
+    }
 }
