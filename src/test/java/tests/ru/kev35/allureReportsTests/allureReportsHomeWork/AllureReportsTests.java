@@ -2,12 +2,11 @@ package tests.ru.kev35.allureReportsTests.allureReportsHomeWork;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.Objects;
 
@@ -20,11 +19,17 @@ public class AllureReportsTests {
     public static String REPOSITORY = "Kev-35/QaGuruAutoTests";
     public static String EXPECTED_RESULT = "AllureTest";
 
-    @BeforeAll
-    static void setupEnvironment() {
+    @BeforeEach
+    void setupEnvironment() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://github.com/";
         Configuration.pageLoadStrategy = "eager";
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
+    @AfterEach
+    void closeWebDriver() {
+        Selenide.closeWebDriver();
     }
 
     @Test
@@ -42,11 +47,9 @@ public class AllureReportsTests {
         $("[dir=auto]").shouldHave(Condition.text(EXPECTED_RESULT));
     }
 
-
     @Test
     @DisplayName("Проверка присутствия Issue на GitHub with steps (SelenideTest)")
     public void checkIssueSelenideWithStepsTest(){
-        SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Открытие страницы репозитория" , () -> {
             open(REPOSITORY);
@@ -66,7 +69,6 @@ public class AllureReportsTests {
     @Test
     @DisplayName("Проверка присутствия Issue на GitHub with @Step (SelenideTest)")
     public void checkIssueSelenideWithPageStepsTest(){
-        SelenideLogger.addListener("allure", new AllureSelenide());
         StepsForAllureTests step = new StepsForAllureTests();
 
         step.openPageRepository(REPOSITORY);
@@ -74,6 +76,5 @@ public class AllureReportsTests {
         step.clickOnIssueForAllureTest();
         step.checkTextInIssue(EXPECTED_RESULT);
         step.takeScreenshot();
-
     }
 }

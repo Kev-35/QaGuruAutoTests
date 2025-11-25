@@ -64,7 +64,7 @@ dependencies {
         }
     }
 
-
+1
     tasks.register("demoqa", Test::class) {
         useJUnitPlatform {
             includeTags("FormReg") // запуск тестов по Тегу запуск
