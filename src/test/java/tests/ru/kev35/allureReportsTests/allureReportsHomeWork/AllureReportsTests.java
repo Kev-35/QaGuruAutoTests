@@ -7,9 +7,7 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
-
 import java.util.Objects;
-
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.attachment;
 import static io.qameta.allure.Allure.step;
