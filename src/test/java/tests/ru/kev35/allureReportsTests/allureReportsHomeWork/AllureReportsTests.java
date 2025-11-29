@@ -17,11 +17,15 @@ public class AllureReportsTests {
     public static String REPOSITORY = "Kev-35/QaGuruAutoTests";
     public static String EXPECTED_RESULT = "AllureTest";
 
-    @BeforeEach
-    void setupEnvironment() {
+    @BeforeAll
+    static void setupEnvironmentForAllTest (){
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://github.com/";
         Configuration.pageLoadStrategy = "eager";
+    }
+
+    @BeforeEach
+    void setupEnvironmentForEachTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
@@ -31,7 +35,7 @@ public class AllureReportsTests {
     }
 
     @Test
-    @Owner("Kuznetcov E.V.")
+    @Owner("Kuznetsov E.V.")
     @Feature("Issue в репозитории")
     @Story("Создание Issue")
     @Severity(SeverityLevel.NORMAL)
@@ -49,18 +53,15 @@ public class AllureReportsTests {
     @DisplayName("Проверка присутствия Issue на GitHub with steps (SelenideTest)")
     public void checkIssueSelenideWithStepsTest(){
 
-        step("Открытие страницы репозитория" , () -> {
-            open(REPOSITORY);
-        });
-        step("Клик по кнопке Issue", () ->{
-                    $("#issues-tab").click();
-        });
-        step("Клик на задачу IssueForAllureTest", () ->{
-            $("[href='/Kev-35/QaGuruAutoTests/issues/1']").click();
-        });
-        step("Проверка ожидаемого результата. Текст в задаче - AllureTest", () ->{
-            $("[dir=auto]").shouldHave(Condition.text(EXPECTED_RESULT));
-        });
+        step("Открытие страницы репозитория" , () ->
+                open(REPOSITORY));
+        step("Клик по кнопке Issue", () ->
+                $("#issues-tab").click());
+        step("Клик на задачу IssueForAllureTest", () ->
+                $("[href='/Kev-35/QaGuruAutoTests/issues/1']").click());
+        step("Проверка ожидаемого результата. Текст в задаче - AllureTest", () ->
+                $("[dir=auto]").shouldHave(Condition.text(EXPECTED_RESULT)));
+
         attachment("Source", Objects.requireNonNull(webdriver().driver().source()));
     }
 
